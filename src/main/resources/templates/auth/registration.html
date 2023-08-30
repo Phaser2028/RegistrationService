@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration</title>
+</head>
+<body>
+
+<h1>Registration page</h1>
+<br/>
+
+
+<p>Загрузите картинку профиля</p>
+<form enctype="multipart/form-data" th:method="POST" th:action="@{/auth/registration}" th:object="${personDTO}">
+    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+
+
+    <input type="file" name="image" accept="image/png, image/jpeg" />
+    <br>
+    <br>
+
+    <label for="email">Введите email: </label>
+    <input type="text" id="email"  th:field="*{email}" required>
+    <div style="color:red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></div>
+    <br/>
+
+    <label for="username">Введите имя пользователя: </label>
+    <input type="text" th:field="*{username}" id="username"/>
+    <div style="color:red"  th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</div>
+    <br/>
+
+
+    <label for="password">Введите пароль: </label>
+    <input type="password" th:field="*{password}" id="password" required/>
+    <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
+    <br/>
+
+    <label for="confirmPassword">Подтвердите пароль: </label>
+    <input type="password" th:field="*{confirmPassword}" id="confirmPassword"/>
+    <div style="color:red" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}">Password Error</div>
+    <br/>
+
+
+
+
+    <input type="submit" value="Sign up!"/>
+</form>
+
+</body>
+</html>
