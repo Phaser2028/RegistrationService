@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    driverClassName:
+    url:
+    username:
+    password:
+
+  jpa:
+    properties:
+      hibernate:
+        dialect:
+        show_sql:
+
+  servlet:
+    multipart:
+      max-file-size:
+      max-request-size:
+
+  mail:
+    host:
+    port:
+    username:
+    password:
+    protocol:
+
+
+upload:
+  path:
